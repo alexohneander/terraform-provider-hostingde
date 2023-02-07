@@ -95,6 +95,18 @@ type Zone struct {
 	ZoneConfig ZoneConfig  `json:"zoneConfig"`
 }
 
+// TODO: Hier muss das Object noch vervollständigt werden
+// VirtualMachine the Virtual Machine Object.
+// https://www.hosting.de/api/?json#the-virtualmachine-object
+type VirtualMachine struct {
+	ID          string `json:"id"`
+	AccountID   string `json:"accountId"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
+	Product     string `json:"product"`
+	Memory      int    `json:"memory"`
+}
+
 // ZoneUpdateRequest represents a API ZoneUpdate request.
 // https://www.hosting.de/api/?json#updating-zones
 type ZoneUpdateRequest struct {
@@ -190,6 +202,23 @@ type RecordsFindResponse struct {
 		Type         string      `json:"type"`
 		Data         []DNSRecord `json:"data"`
 	} `json:"response"`
+}
+
+// VirtualMachineCreateRequest represents a API virtualMachineCreate request.
+// https://www.hosting.de/api/?json#creating-virtual-machines
+type VirtualMachineCreateRequest struct {
+	*BaseRequest
+	Name        string `json:"name"`
+	ProductCode string `json:"productCode"`
+	Description string `json:"description"`
+}
+
+// VirtualMachineCreateResponse represents a response from the API.
+// https://www.hosting.de/api/?json#creating-virtual-machines
+type VirtualMachineCreateResponse struct {
+	BaseResponse
+	Response struct {
+	}
 }
 
 // BaseResponse Common response struct.
